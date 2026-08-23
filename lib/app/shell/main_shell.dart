@@ -121,25 +121,33 @@ class MainShell extends StatelessWidget {
         }
 
         // ─── Phone: Floating bottom nav ────────────────────────────────
-        return Scaffold(
-          body: Stack(
-            children: [
-              navigationShell,
-              // Offline pill — positioned above the nav bar
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 120,
-                child: Center(child: _BottomOfflinePill()),
-              ),
-            ],
-          ),
-          extendBody: true,
-          bottomNavigationBar: _FloatingBottomNav(
-            currentIndex: navigationShell.currentIndex,
-            onTap: _select,
-            items: items,
-            buildIcon: _destinationIcon,
+        return PopScope(
+          canPop: navigationShell.currentIndex == 0,
+          onPopInvokedWithResult: (didPop, _) {
+            if (!didPop) {
+              navigationShell.goBranch(0, initialLocation: true);
+            }
+          },
+          child: Scaffold(
+            body: Stack(
+              children: [
+                navigationShell,
+                // Offline pill — positioned above the nav bar
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 120,
+                  child: Center(child: _BottomOfflinePill()),
+                ),
+              ],
+            ),
+            extendBody: true,
+            bottomNavigationBar: _FloatingBottomNav(
+              currentIndex: navigationShell.currentIndex,
+              onTap: _select,
+              items: items,
+              buildIcon: _destinationIcon,
+            ),
           ),
         );
       },
