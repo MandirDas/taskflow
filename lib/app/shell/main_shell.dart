@@ -129,7 +129,7 @@ class MainShell extends StatelessWidget {
               Positioned(
                 left: 0,
                 right: 0,
-                bottom: 96,
+                bottom: 120,
                 child: Center(child: _BottomOfflinePill()),
               ),
             ],
