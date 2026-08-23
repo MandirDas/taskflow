@@ -21,28 +21,13 @@ class TaskFlowBrandMark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mark = Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: onGradient
-            ? Colors.white
-            : Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(size * 0.26),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: onGradient ? 0.14 : 0.07),
-            blurRadius: size * 0.3,
-            offset: Offset(0, size * 0.1),
-          ),
-        ],
-      ),
-      child: Icon(
-        Icons.task_alt_rounded,
-        size: size * 0.56,
-        color: onGradient
-            ? AppColors.primaryStrong
-            : Theme.of(context).colorScheme.primary,
+    final mark = ClipRRect(
+      borderRadius: BorderRadius.circular(size * 0.22),
+      child: Image.asset(
+        'assets/images/taskflow_logo.png',
+        width: size,
+        height: size,
+        fit: BoxFit.contain,
       ),
     );
     return hero

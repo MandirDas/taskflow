@@ -64,3 +64,4 @@ flutter:
 
   assets:
     - assets/mock_data/
+    - assets/images/
