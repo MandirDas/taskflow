@@ -332,21 +332,43 @@ class _ProgressHero extends StatelessWidget {
             duration: AppMotion.duration(context, AppMotion.emphasized),
             curve: AppMotion.standardCurve,
             builder: (context, value, _) => SizedBox(
-              width: 80,
-              height: 80,
+              width: 64,
+              height: 64,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   CircularProgressIndicator(
                     value: value,
-                    strokeWidth: 7,
-                    backgroundColor: Colors.white.withValues(alpha: 0.18),
+                    strokeWidth: 5,
+                    backgroundColor: Colors.white.withValues(alpha: 0.15),
                     color: Colors.white,
+                    strokeCap: StrokeCap.round,
                   ),
-                  Text(
-                    '${(value * 100).round()}%',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w700),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '${(value * 100).round()}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),
+                        ),
+                        TextSpan(
+                          text: '%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                  color: Colors.white.withValues(alpha: 0.7),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
