@@ -245,9 +245,23 @@ flutter build apk --release  # Production APK
 flutter build apk --debug    # Debug APK
 ```
 
-**Flutter version:** 3.6+ (stable)  
-**Dart version:** 3.6+  
-**Tested on:** Android (physical device + emulator), iOS Simulator
+## Environment & Toolchain
+
+| Tool | Version |
+|------|---------|
+| Flutter | 3.27.0 (stable) |
+| Dart | 3.6.0 |
+| Java | OpenJDK 21.0.7+ |
+| Kotlin | 1.8.22 |
+| Gradle | 8.9 |
+| Android Gradle Plugin (AGP) | 8.2.1 |
+| Android SDK | 36.0.0 (Platform android-36) |
+| compileSdkVersion | 35 |
+| minSdkVersion | 21 (Android 5.0 Lollipop) |
+| targetSdkVersion | 35 (Android 15) |
+| NDK | 26.1.10909125 |
+
+**Tested on:** Android physical device + emulator, iOS Simulator (macOS)
 
 ---
 
