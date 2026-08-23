@@ -120,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     tilePadding: EdgeInsets.zero,
                     childrenPadding:
                         const EdgeInsets.only(bottom: AppSpacing.sm),
-                    title: Text('Use a demo account',
+                    title: Text('Quick access accounts',
                         style: Theme.of(context).textTheme.labelLarge),
                     leading: Icon(Icons.science_outlined,
                         color: Theme.of(context).colorScheme.primary),
@@ -182,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(width: 6),
                       Flexible(
                         child: Text(
-                          'Your demo session is stored securely on this device.',
+                          'Your session is stored securely on this device.',
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall

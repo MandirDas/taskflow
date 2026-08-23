@@ -101,7 +101,6 @@ void main() {
       },
       act: (cubit) => cubit.assignUser('task_2001', 'user_001'),
       expect: () => [
-        const TaskDetailLoading(),
         isA<TaskDetailSuccess>(),
       ],
       verify: (_) {
@@ -146,7 +145,6 @@ void main() {
       },
       act: (cubit) => cubit.assignUser('task_2001', null),
       expect: () => [
-        const TaskDetailLoading(),
         isA<TaskDetailSuccess>(),
       ],
       verify: (_) {
@@ -174,7 +172,6 @@ void main() {
       },
       act: (cubit) => cubit.updateStatus('task_2001', 'in_progress'),
       expect: () => [
-        const TaskDetailLoading(),
         isA<TaskDetailSuccess>(),
       ],
       verify: (_) {

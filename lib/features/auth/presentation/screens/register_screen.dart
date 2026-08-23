@@ -187,7 +187,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   Text(
-                    'Registration is simulated locally for this assignment.',
+                    'Account creation is handled locally on this device.',
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme

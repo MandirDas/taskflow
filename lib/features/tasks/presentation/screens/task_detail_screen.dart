@@ -128,7 +128,7 @@ class _TaskDetailContent extends StatelessWidget {
         maxWidth: 860,
         child: ListView(
           physics: const AlwaysScrollableScrollPhysics(),
-          padding: const EdgeInsets.only(bottom: 40),
+          padding: const EdgeInsets.only(bottom: 120),
           children: [
             _TaskHero(task: state.task),
             const SizedBox(height: AppSpacing.md),

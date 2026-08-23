@@ -197,7 +197,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: AppSpacing.xl),
             const SectionHeader(
                 title: 'Developer & Demo',
-                subtitle: 'Simulate assignment scenarios without a backend.'),
+                subtitle: 'Debug controls for testing scenarios.'),
             const SizedBox(height: AppSpacing.sm),
             Card(
               child: ExpansionTile(
@@ -247,7 +247,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                     child: Text(
-                        'Special IDs such as error_404 and error_timeout can still trigger targeted assignment states.',
+                        'Special IDs such as error_404 and error_timeout can trigger specific error states.',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: context.taskflowColors.textTertiary)),
                   ),
@@ -340,11 +340,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Theme.of(context).colorScheme.error)),
             ),
-            const SizedBox(height: AppSpacing.xl),
-            Center(
-                child: Text('TaskFlow 1.0.0 · Assignment build',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: context.taskflowColors.textTertiary))),
           ],
         ),
       ),

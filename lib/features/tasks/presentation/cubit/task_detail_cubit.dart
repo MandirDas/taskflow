@@ -19,8 +19,9 @@ class TaskDetailCubit extends Cubit<TaskDetailState> {
   }) : super(const TaskDetailInitial());
 
   /// Load task details including comments and assignee info.
-  Future<void> loadTask(String taskId) async {
-    emit(const TaskDetailLoading());
+  /// When [silent] is true, does not emit Loading state (used after mutations).
+  Future<void> loadTask(String taskId, {bool silent = false}) async {
+    if (!silent) emit(const TaskDetailLoading());
     try {
       final task = await taskRepository.getTaskById(taskId);
       final comments = await taskRepository.getTaskComments(taskId);
@@ -50,7 +51,7 @@ class TaskDetailCubit extends Cubit<TaskDetailState> {
   Future<void> updateStatus(String taskId, String newStatus) async {
     try {
       await taskRepository.updateTask(id: taskId, status: newStatus);
-      await loadTask(taskId);
+      await loadTask(taskId, silent: true);
     } catch (e) {
       emit(
           TaskDetailError(message: 'Failed to update status: ${e.toString()}'));
@@ -61,7 +62,7 @@ class TaskDetailCubit extends Cubit<TaskDetailState> {
   Future<void> updatePriority(String taskId, String newPriority) async {
     try {
       await taskRepository.updateTask(id: taskId, priority: newPriority);
-      await loadTask(taskId);
+      await loadTask(taskId, silent: true);
     } catch (e) {
       emit(TaskDetailError(
           message: 'Failed to update priority: ${e.toString()}'));
@@ -83,7 +84,7 @@ class TaskDetailCubit extends Cubit<TaskDetailState> {
         }
       }
       await taskRepository.assignTask(taskId, userId);
-      await loadTask(taskId);
+      await loadTask(taskId, silent: true);
     } catch (e) {
       emit(TaskDetailError(message: 'Failed to assign user: ${e.toString()}'));
     }
@@ -97,7 +98,7 @@ class TaskDetailCubit extends Cubit<TaskDetailState> {
         authorId: authorId,
         body: body,
       );
-      await loadTask(taskId);
+      await loadTask(taskId, silent: true);
     } catch (e) {
       emit(TaskDetailError(message: 'Failed to add comment: ${e.toString()}'));
     }
