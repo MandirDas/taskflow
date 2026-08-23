@@ -9,7 +9,6 @@ import '../../../../core/di/injection.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/date_utils.dart';
 import '../../../../core/widgets/app_page_scaffold.dart';
-import '../../../../core/widgets/empty_state_widget.dart';
 import '../../../../core/widgets/error_display_widget.dart';
 import '../../../../core/widgets/loading_widget.dart';
 import '../../../../core/widgets/motion.dart';
@@ -120,22 +119,7 @@ class _ProjectContent extends StatelessWidget {
                         : 'Open a task to update its progress.'),
                 const SizedBox(height: AppSpacing.sm),
                 if (state.tasks.isEmpty)
-                  EmptyStateWidget(
-                    fullScreen: false,
-                    title: 'No tasks yet',
-                    subtitle: 'Turn this project into a clear next action.',
-                    icon: Icons.task_outlined,
-                    actionLabel: 'Add Task',
-                    onAction: () async {
-                      await context
-                          .push(RouteNames.createTaskForProject(projectId));
-                      if (context.mounted) {
-                        await context
-                            .read<ProjectDetailCubit>()
-                            .loadProject(projectId);
-                      }
-                    },
-                  )
+                  _EmptyTasksCard()
                 else
                   ...state.tasks.map((task) => Padding(
                         padding: const EdgeInsets.only(bottom: AppSpacing.xs),
@@ -327,6 +311,60 @@ class _StatusSummary extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class _EmptyTasksCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(
+          vertical: AppSpacing.xxl, horizontal: AppSpacing.lg),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerHighest.withValues(alpha: 0.3),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: scheme.outline.withValues(alpha: 0.08),
+        ),
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: 64,
+            height: 64,
+            decoration: BoxDecoration(
+              color: scheme.primary.withValues(alpha: 0.08),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.add_task_rounded,
+              size: 32,
+              color: scheme.primary,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            'No tasks yet',
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium
+                ?.copyWith(fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            'Use the + button to create the first task\nfor this project.',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withValues(alpha: 0.6)),
+          ),
+        ],
       ),
     );
   }
