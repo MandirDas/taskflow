@@ -54,7 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ResponsiveContent(
         maxWidth: 820,
         child: ListView(
-          padding: const EdgeInsets.only(bottom: 40),
+          padding: const EdgeInsets.only(bottom: 120),
           children: [
             if (session != null) ...[
               const SectionHeader(title: 'Profile'),

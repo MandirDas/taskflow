@@ -173,6 +173,8 @@ class _NotificationContent extends StatelessWidget {
         ),
       ));
     }
+    // Add bottom padding for floating nav bar
+    slivers.add(const SliverPadding(padding: EdgeInsets.only(bottom: 100)));
     return slivers;
   }
 }

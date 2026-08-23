@@ -4,6 +4,11 @@ import '../../app/theme/taskflow_theme.dart';
 import 'accessibility.dart';
 import 'responsive_layout.dart';
 
+/// Height to reserve at the bottom of scrollable content to avoid
+/// the floating bottom navigation bar obscuring content.
+/// Nav bar (68) + bottom margin (12) + safe area (~34) + buffer (8) = ~122
+const double kFloatingNavBarHeight = 100;
+
 /// Shared page shell with modern header spacing and responsive content width.
 class AppPageScaffold extends StatelessWidget {
   final String title;
@@ -50,7 +55,12 @@ class AppPageScaffold extends StatelessWidget {
         ),
         actions: actions,
       ),
-      floatingActionButton: floatingActionButton,
+      floatingActionButton: floatingActionButton != null
+          ? Padding(
+              padding: const EdgeInsets.only(bottom: kFloatingNavBarHeight),
+              child: floatingActionButton,
+            )
+          : null,
       body: constrainBody
           ? ResponsiveContent(
               maxWidth: maxWidth, applyPadding: false, child: body)

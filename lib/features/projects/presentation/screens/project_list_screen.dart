@@ -149,7 +149,7 @@ class _ProjectListViewState extends State<_ProjectListView> {
             )
           else
             SliverPadding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 96),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 140),
               sliver: SliverLayoutBuilder(
                 builder: (context, constraints) {
                   final columns = constraints.crossAxisExtent >= 760 ? 2 : 1;

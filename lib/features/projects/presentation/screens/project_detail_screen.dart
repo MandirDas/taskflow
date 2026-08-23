@@ -94,7 +94,7 @@ class _ProjectContent extends StatelessWidget {
           context.read<ProjectDetailCubit>().loadProject(projectId),
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 96),
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 140),
         child: Align(
           alignment: Alignment.topCenter,
           child: ConstrainedBox(

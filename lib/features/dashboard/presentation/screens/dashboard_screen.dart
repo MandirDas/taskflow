@@ -161,7 +161,7 @@ class _DashboardContent extends StatelessWidget {
       onRefresh: context.read<DashboardCubit>().refresh,
       child: ListView(
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.only(bottom: 32),
+        padding: const EdgeInsets.only(bottom: 120),
         children: [
           _PageHeader(userName: state.userName),
           Padding(

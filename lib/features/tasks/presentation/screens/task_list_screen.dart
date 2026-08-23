@@ -210,7 +210,7 @@ class _TaskListViewState extends State<_TaskListView> {
             )
           else
             SliverPadding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 96),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 140),
               sliver: SliverList.separated(
                 itemCount: tasks.length,
                 separatorBuilder: (_, __) =>
